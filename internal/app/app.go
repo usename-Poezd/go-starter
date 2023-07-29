@@ -15,7 +15,7 @@ import (
 // @BasePath /api
 // Run initializes whole application.
 func Run() {
-	log := logger.New()
+	log := logger.Get()
 	_, err := config.Init()
 	if err != nil {
 		log.Infow("cannot load config")
@@ -26,8 +26,8 @@ func Run() {
 	app := fiber.New()
 	logger := logger.NewConsole()
 	app.Use(fiberzap.New(fiberzap.Config{
-        Logger: logger,
-    }))
+		Logger: logger,
+	}))
 
 	h := http.NewHandler(log)
 	h.Init(app)
