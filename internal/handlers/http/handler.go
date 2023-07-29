@@ -4,7 +4,6 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/swagger"
-	"github.com/usename-Poezd/go-starter/internal/handlers/http/responses"
 	"go.uber.org/zap"
 )
 
@@ -38,9 +37,8 @@ func (h Handler) Init(app *fiber.App) {
 // @Failure 400,401,500,503 {null} null
 // @Router /ping [get]
 func (h Handler) Ping(c *fiber.Ctx) error {
-	return c.Status(200).JSON(responses.Response{
-		Ok:      true,
-		Message: "ok",
-		Data:    nil,
+	return c.Status(200).JSON(fiber.Map{
+		"ok":      true,
+		"message": "pong",
 	})
 }

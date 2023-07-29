@@ -1,14 +1,11 @@
 package responses
 
 type ErrorResponse struct {
-	Code    int    `json:"code"`
-	Message string `json:"message"`
-
-	Errors []interface{} `json:"errors"`
+	Message string        `json:"message"`
+	Errors  []interface{} `json:"errors,omitempty"`
 }
 
 type Response struct {
-	Ok      bool        `json:"ok"`
-	Message string      `json:"message"`
-	Data    interface{} `json:"data"`
+	Data interface{} `json:"data,omitempty"`
+	Meta interface{} `json:"meta,omitempty"`
 }

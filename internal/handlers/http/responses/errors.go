@@ -1,4 +1,4 @@
-package errors
+package responses
 
 type ValidationError struct {
 	FailedField string `json:"failedField"`
