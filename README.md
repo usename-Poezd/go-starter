@@ -3,7 +3,7 @@
 
 ## Usages
 - [Fiber](https://github.com/gofiber/fiber) - http server
-- [⚡ Zap](https://github.com/uber-go/zap) - for logging
+- [Zerolog](https://github.com/rs/zerolog) - for logging
 - [Viper](https://github.com/spf13/viper) - config
 - [migrate](https://github.com/golang-migrate/migrate) - migration tool
 
