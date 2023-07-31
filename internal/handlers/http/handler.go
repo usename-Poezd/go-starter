@@ -4,15 +4,13 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/swagger"
-	"go.uber.org/zap"
 )
 
 type Handler struct {
-	logger *zap.SugaredLogger
 }
 
-func NewHandler(logger *zap.SugaredLogger) *Handler {
-	return &Handler{logger}
+func NewHandler() *Handler {
+	return &Handler{}
 }
 
 func (h Handler) Init(app *fiber.App) {

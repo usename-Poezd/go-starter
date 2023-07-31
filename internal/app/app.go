@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/gofiber/contrib/fiberzap"
+	"github.com/gofiber/contrib/fiberzerolog"
 	"github.com/gofiber/fiber/v2"
 	"github.com/usename-Poezd/go-starter/internal/config"
 	"github.com/usename-Poezd/go-starter/internal/handlers/http"
@@ -18,18 +18,16 @@ func Run() {
 	log := logger.Get()
 	_, err := config.Init()
 	if err != nil {
-		log.Infow("cannot load config")
+		log.Info().Err(err).Msg("cannot load config")
 	}
-
-	log.Infow("loaded")
 
 	app := fiber.New()
 	logger := logger.NewConsole()
-	app.Use(fiberzap.New(fiberzap.Config{
-		Logger: logger,
-	}))
+	app.Use(fiberzerolog.New(fiberzerolog.Config{
+        Logger: &logger,
+    }))
 
-	h := http.NewHandler(log)
+	h := http.NewHandler()
 	h.Init(app)
 
 	app.Listen(":8000")
