@@ -6,6 +6,7 @@ import (
 	"github.com/usename-Poezd/go-starter/internal/config"
 	"github.com/usename-Poezd/go-starter/internal/handlers/http"
 	"github.com/usename-Poezd/go-starter/pkg/logger"
+	_ "github.com/usename-Poezd/go-starter/docs"
 )
 
 // @title API

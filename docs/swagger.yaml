@@ -3,10 +3,7 @@ definitions:
   responses.Response:
     properties:
       data: {}
-      message:
-        type: string
-      ok:
-        type: boolean
+      meta: {}
     type: object
 host: localhost:8000
 info:

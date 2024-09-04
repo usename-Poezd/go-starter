@@ -1,6 +1,8 @@
 package config
 
 import (
+	"os"
+	"strings"
 	"sync"
 
 	"github.com/spf13/viper"
@@ -49,10 +51,22 @@ func Init() (*Config, error) {
 func parseConfigFile() error {
 	viper.SetConfigFile(".env")
 	viper.AutomaticEnv()
-
+	
 	if err := viper.ReadInConfig(); err != nil {
-		return err
+		if _, err := os.Stat("/.dockerenv"); err != nil {
+			/*
+				if running in a Docker container, a missing configuration might prevent
+				correct behaviour (depending on core functionality and lack of environment variable usage)
+			*/
+			return err
+		}
+
+		for _, s := range os.Environ() {
+			a := strings.Split(s, "=")
+			viper.BindEnv(a[0])
+		}
 	}
+
 
 	return viper.MergeInConfig()
 }
