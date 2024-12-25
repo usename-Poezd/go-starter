@@ -1,0 +1,46 @@
+basePath: /api
+definitions:
+  responses.Response:
+    properties:
+      data: {}
+      meta: {}
+    type: object
+host: localhost:8000
+info:
+  contact: {}
+  description: API
+  title: API
+  version: "1.0"
+paths:
+  /ping:
+    get:
+      consumes:
+      - application/json
+      description: Ping
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: "null"
+        "401":
+          description: Unauthorized
+          schema:
+            type: "null"
+        "500":
+          description: Internal Server Error
+          schema:
+            type: "null"
+        "503":
+          description: Service Unavailable
+          schema:
+            type: "null"
+      summary: Ping
+      tags:
+      - service
+swagger: "2.0"
